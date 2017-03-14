@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">IntelligentBuilding</string>
+    <string name="home">首页</string>
+    <string name="setting">设置</string>
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+    <string name="tip_loading">正在加载...</string>
+    <string name="username">用户名:</string>
+    <string name="intelligent_life">智慧生活</string>
+    <string name="zega">哲嘉科技</string>
+    <string name="password">密&#160;&#160;&#160;&#160;码:</string>
+    <string name="login">登&#160;&#160;&#160;录</string>
+    <string name="setnetwork">当前无可用网络，是否设置网络？</string>
+    <string name="setting_yes">设置网络</string>
+    <string name="setting_no">退出</string>
+</resources>

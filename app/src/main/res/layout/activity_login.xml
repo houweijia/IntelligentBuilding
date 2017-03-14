@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.veigar.intelligentbuilding.ui.LoginActivity">
+
+    <include layout="@layout/common_progress"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/activity_login">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center">
+
+        <ImageView
+            android:src="@mipmap/logo_civet"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/imageView" />
+<!--
+        <TextView
+            android:text="智能建筑"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>-->
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_edit_shape"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textSize="15sp"
+                android:textColor="@android:color/white"/>
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_shape"
+                android:padding="10dp"
+                android:textColor="@android:color/white"
+                android:text="543471554@qq.com"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="50dp"
+            android:background="@color/login_background"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"/>
+
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_shape"
+                android:textColor="@android:color/white"
+                android:padding="10dp"
+                android:text="houweijia123456"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="40dp"
+        android:text="@string/login"
+        android:background="@drawable/login_button_selector"
+        android:textColor="@color/colorPrimary"/>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center">
+
+       <TextView
+           android:drawablePadding="5dp"
+           android:drawableLeft="@mipmap/line"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/intelligent_life"
+           android:gravity="center"
+           android:textColor="@android:color/white"/>
+
+       <TextView
+           android:drawablePadding="5dp"
+           android:drawableRight="@mipmap/line"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/zega"
+           android:gravity="center"
+           android:textColor="@android:color/white"
+           android:layout_marginLeft="30dp"/>
+   </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
