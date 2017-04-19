@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_toolbar"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+       <com.example.veigar.intelligentbuilding.util.CircleMenuLayout
+           android:id="@+id/id_menulayout"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:padding="100dp"
+           android:background="@mipmap/circle_bg3"
+           android:layout_centerInParent="true">
+
+           <RelativeLayout
+               android:id="@id/id_circle_menu_item_center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" >
+
+               <!--            <ImageView
+                               android:layout_width="104.0dip"
+                               android:layout_height="104.0dip"
+                               android:layout_centerInParent="true"
+                               android:background="@mipmap/turnplate_center_unlogin" />-->
+
+               <com.example.veigar.intelligentbuilding.util.RoundImageView
+                   android:layout_width="104.0dip"
+                   android:layout_height="140.0dip"
+                   android:layout_centerInParent="true"
+                   android:background="@mipmap/logo4"/>
+
+               <!--<ImageView
+                   android:layout_width="116.0dip"
+                   android:layout_height="116.0dip"
+                   android:layout_centerInParent="true"
+                   android:background="@mipmap/turnplate_mask_unlogin_normal" />-->
+           </RelativeLayout>
+       </com.example.veigar.intelligentbuilding.util.CircleMenuLayout>
+   </RelativeLayout>
+
+
+
+</LinearLayout>

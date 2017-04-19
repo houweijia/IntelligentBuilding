@@ -14,17 +14,59 @@
         android:gravity="center_horizontal"
         android:padding="5dp">
 
+
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/my_home"/>
-        
+
+        <ImageView
+            android:id="@+id/whether_online"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@mipmap/circle_red"
+            android:layout_marginTop="5dp"
+            />
+
         <TextView
             android:id="@+id/equipment_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="小明的家"
-            android:layout_marginTop="5dp"/>
+            android:textSize="15sp"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="12sp"
+            android:maxEms="8"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/school"
+            android:textSize="12sp"
+            android:maxEms="9"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上一次登录时间:"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_last_login_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017年3月28日13点12分15秒"
+            android:textSize="10sp"/>
     </LinearLayout>
 
 

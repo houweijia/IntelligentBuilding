@@ -4,17 +4,37 @@
     android:id="@+id/activity_enviroment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.veigar.intelligentbuilding.ui.EnviromentActivity">
+    tools:context="com.example.veigar.intelligentbuilding.ui.EnvironmentActivity">
 
     <include layout="@layout/common_progress"/>
 
-    <include layout="@layout/common_toolbar"
-        android:id="@+id/mtoolbar"/>
-
-    <ListView
-        android:id="@+id/my_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/mtoolbar"></ListView>
+        android:orientation="vertical">
+
+        <include layout="@layout/common_toolbar"
+            />
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/my_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/grey"/>
+
+
+        </com.baoyz.widget.PullRefreshLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

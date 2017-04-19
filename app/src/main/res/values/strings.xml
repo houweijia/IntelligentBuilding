@@ -10,7 +10,17 @@
     <string name="zega">哲嘉科技</string>
     <string name="password">密&#160;&#160;&#160;&#160;码:</string>
     <string name="login">登&#160;&#160;&#160;录</string>
+    <string name="location">常州市&#160;武进区</string>
+    <string name="school">常州工程职业技术学院</string>
     <string name="setnetwork">当前无可用网络，是否设置网络？</string>
     <string name="setting_yes">设置网络</string>
     <string name="setting_no">退出</string>
+    <string name="logining">正在登录...</string>
+    <string name="login_fail">登录失败</string>
+    <string name="environmental_monitoring">环境检测</string>
+    <string name="pull_to_loading">正在加载</string>
+    <string name="quality_balanced">均衡</string>
+    <string name="video">历史录像</string>
+    <string name="monitor">安防监控</string>
+    <string name="no_data">暂无数据</string>
 </resources>

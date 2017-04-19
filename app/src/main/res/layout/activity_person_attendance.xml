@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_person_attendance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.veigar.intelligentbuilding.ui.PersonAttendanceActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include layout="@layout/common_progress"
+        android:id="@+id/include" />
+
+    <LinearLayout
+        android:id="@+id/my_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/include"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <include layout="@layout/common_toolbar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/attendance_style"
+            android:text="veigar"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="班级：3年2班"
+            android:layout_marginLeft="15dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <View
+                    android:id="@+id/my_view"
+                    style="@style/cus_view"
+                    android:layout_marginTop="3dp"
+                    android:background="@android:color/holo_blue_bright"/>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/my_view"
+                    android:layout_marginLeft="5dp"
+                    android:text="出勤天数"/>
+
+                <TextView
+                    android:id="@+id/all_clock_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="22天"
+                    android:layout_marginRight="10dp"/>
+
+
+
+
+                <View
+                    android:id="@+id/my_view2"
+                    style="@style/cus_view"
+                    android:background="@android:color/holo_red_dark"
+                    android:layout_below="@id/all_clock_in"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    style="@style/attendance_content_style"
+                    android:layout_toRightOf="@id/my_view"
+                    android:text="缺卡"
+                    android:layout_below="@id/my_view"
+
+                    />
+
+                <TextView
+                    android:id="@+id/no_clock_in"
+                    android:layout_below="@id/my_view"
+                    style="@style/attendance_content_style"
+                    android:layout_alignParentRight="true"
+                    android:text="0天"
+                    android:layout_marginRight="10dp"/>
+
+
+
+
+                <View
+                    android:id="@+id/my_view3"
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:layout_below="@id/no_clock_in"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    style="@style/attendance_content_style"
+                    android:layout_toRightOf="@id/my_view"
+                    android:text="旷课"
+                    android:layout_below="@id/my_view2"/>
+
+                <TextView
+                    android:id="@+id/truancy"
+                    android:layout_below="@id/my_view2"
+                    style="@style/attendance_content_style"
+                    android:layout_alignParentRight="true"
+                    android:text="1天"
+                    android:layout_marginRight="10dp"/>
+
+                <View
+                    android:id="@+id/my_view7"
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:layout_below="@id/truancy"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    style="@style/attendance_content_style"
+                    android:layout_toRightOf="@id/my_view"
+                    android:text="请假"
+                    android:layout_below="@id/my_view3"/>
+
+                <TextView
+                    android:id="@+id/as_for_leave"
+                    android:layout_below="@id/my_view3"
+                    style="@style/attendance_content_style"
+                    android:layout_alignParentRight="true"
+                    android:text="0次"
+                    android:layout_marginRight="10dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <View
+                    android:id="@+id/my_view4"
+                    android:layout_marginTop="3dp"
+                    style="@style/cus_view"
+                    android:background="@android:color/holo_blue_bright"/>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/my_view4"
+                    android:layout_marginLeft="5dp"
+                    android:text="正常打卡"/>
+
+                <TextView
+                    android:id="@+id/normal_clock_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="21天"
+                    android:layout_marginRight="10dp"/>
+
+
+                <View
+                    android:id="@+id/my_view5"
+                    style="@style/cus_view"
+                    android:background="@android:color/holo_red_dark"
+                    android:layout_below="@id/normal_clock_in"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    style="@style/attendance_content_style"
+                    android:layout_toRightOf="@id/my_view4"
+                    android:text="早退"
+                    android:layout_below="@id/my_view4"/>
+
+                <TextView
+                    android:id="@+id/leave_early"
+                    android:layout_below="@id/my_view4"
+                    style="@style/attendance_content_style"
+                    android:layout_alignParentRight="true"
+                    android:text="0天"
+                    android:layout_marginRight="10dp"/>
+
+                <View
+                    android:id="@+id/my_view6"
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:layout_below="@id/leave_early"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    style="@style/attendance_content_style"
+                    android:layout_toRightOf="@id/my_view4"
+                    android:text="迟到"
+                    android:layout_below="@id/my_view5"/>
+
+                <TextView
+                    android:id="@+id/late"
+                    android:layout_below="@id/my_view5"
+                    style="@style/attendance_content_style"
+                    android:layout_alignParentRight="true"
+                    android:text="1天"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="@color/grey"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/mPieChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"/>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

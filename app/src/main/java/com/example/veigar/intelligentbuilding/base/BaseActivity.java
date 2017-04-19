@@ -9,12 +9,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.veigar.intelligentbuilding.R;
 import com.example.veigar.intelligentbuilding.service.NetWorkStateService;
 import com.example.veigar.intelligentbuilding.ui.MainActivity;
 import com.example.veigar.intelligentbuilding.ui.WelcomeActivity;
 import com.example.veigar.intelligentbuilding.util.DialogUtils;
+import com.example.veigar.intelligentbuilding.util.L;
 import com.example.veigar.intelligentbuilding.util.MyUtils;
 import com.example.veigar.intelligentbuilding.util.NetworkUtils;
 import com.example.veigar.intelligentbuilding.util.UiHelper;
@@ -55,9 +58,13 @@ public class BaseActivity extends AppCompatActivity{
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
         setSupportActionBar(toolbar);
+        //toolbar后退按钮
         if(!(this instanceof MainActivity)){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setHomeButtonEnabled(true);
+
         }
+
 
     }
 
@@ -111,4 +118,16 @@ public class BaseActivity extends AppCompatActivity{
         }
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

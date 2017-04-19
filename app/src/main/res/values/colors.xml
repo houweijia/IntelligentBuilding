@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="textColor">#ffffff</color>
     <color name="login_background">#50ffffff</color>
+    <color name="grey">#F5F5F5</color>textWhite
+    <color name="textWhite">#ffffff</color>
+    <color name="white_transparent">#CCffffff</color> <!--不透明度80%-->
+    <color name="gold">#FFD700</color> <!--不透明度80%-->
 </resources>

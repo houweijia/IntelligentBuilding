@@ -7,8 +7,11 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by veigar on 2017/3/6.
@@ -271,4 +274,51 @@ public class MyUtils {
 
         return (bitmap);
     }
+
+
+    /*public static String timestamp2Date(String str_num) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if (str_num.length() == 13) {
+            String date = sdf.format(new Date(toLong(str_num)));
+            //L.e(Constant.TAG + "将13位时间戳:" + str_num + "转化为字符串:", date);
+            return date;
+        } else {
+            String date = sdf.format(new Date(toInt(str_num) * 1000L));
+            //LogUtil.d(Constant.TAG + "将10位时间戳:" + str_num + "转化为字符串:", date);
+            return date;
+        }
+    }*/
+
+    public static long toLong(String obj) {
+        try {
+            return Long.parseLong(obj);
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    /*public static int toInt(Object obj) {
+        if (obj == null)
+            return 0;
+        return toInt(obj.toString(), 0);
+    }*/
+
+
+    /**
+     * 调用此方法输入所要转换的时间戳输入例如（1402733340）输出（"2014年06月14日16:09"）
+     *
+     * @param time
+     * @return
+     */
+    public static String timet(String time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy年MM月dd日  HH:mm");
+        @SuppressWarnings("unused")
+        long lcc = Long.valueOf(time);
+        int i = Integer.parseInt(time);
+        String times = sdr.format(new Date(i * 1000L));
+        return times;
+
+    }
+
+
 }

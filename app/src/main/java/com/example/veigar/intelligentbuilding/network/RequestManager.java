@@ -20,7 +20,7 @@ public class RequestManager {
     private VolleyManager request;
 
     private RequestManager() {
-        request = new VolleyManager();
+        request = new VolleyManager() {};
     }
 
     public static RequestManager getInstance() {
@@ -98,5 +98,7 @@ public class RequestManager {
     public interface ErrorListener extends Response.ErrorListener {
 
     }
+
+
 
 }

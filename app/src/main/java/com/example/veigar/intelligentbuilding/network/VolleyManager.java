@@ -3,6 +3,7 @@ package com.example.veigar.intelligentbuilding.network;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,7 +16,7 @@ import java.util.Map;
  * Volley请求管理类
  * Created by Administrator on 2016/10/13.
  */
-public class VolleyManager {
+public  class VolleyManager {
 
     private static RequestQueue requestQueue = null;
 
@@ -72,9 +73,18 @@ public class VolleyManager {
      * @return
      */
     public Request post(String url, Response.Listener<String> listener,
-                        Response.ErrorListener errorListener, Map<String, String> map) {
+                        Response.ErrorListener errorListener, final Map<String, String> map) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                listener, errorListener);
+                listener, errorListener){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                if(map!=null){
+                    return map;
+                }
+                return super.getParams();
+
+            }
+        };
         addRequestQueue(stringRequest);
         return stringRequest;
     }
@@ -86,5 +96,6 @@ public class VolleyManager {
     public void cancelRequest(String tag) {
         requestQueue.cancelAll(tag);
     }
+
 
 }

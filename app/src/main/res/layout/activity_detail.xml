@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.veigar.intelligentbuilding.ui.DetailActivity">
-    <ImageView
-        android:id="@+id/img_safety"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/safety"/>
-    <ImageView
-        android:id="@+id/img_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/music"/>
-    <ImageView
-        android:id="@+id/img_energy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/energy"/>
-    <ImageView
-        android:id="@+id/img_kaoqin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/kaoqin"/>
+    <include layout="@layout/common_toolbar"/>
+    
 
 
-    <ImageView
-        android:id="@+id/img_enviroment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/environment"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/img_safety"
+            android:text="智能楼宇安防"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/security_img"/>
+        <TextView
+            android:id="@+id/img_music"
+            android:text="智能灯光音响"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/sound_img"/>
+        <TextView
+            android:id="@+id/img_energy"
+            android:text="建筑能耗监测"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/energy_img"
+            />
+        <TextView
+            android:id="@+id/img_kaoqin"
+            android:text="智能门禁考勤"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/attendance_img"/>
 
-    <ImageView
-        android:id="@+id/img_a"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/a"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/img_environment"
+            android:text="建筑环境监测"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/environment_img"
+            />
+
+        <ImageView
+            android:id="@+id/img_a"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/a"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
