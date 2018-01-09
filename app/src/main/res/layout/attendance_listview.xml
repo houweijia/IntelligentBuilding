@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.veigar.intelligentbuilding.util.ListViewForScroll
+    <com.example.veigar.intelligentbuilding.weight.ListViewForScroll
         android:id="@+id/my_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.example.veigar.intelligentbuilding.util.ListViewForScroll>
+        android:layout_height="match_parent"></com.example.veigar.intelligentbuilding.weight.ListViewForScroll>
 
    <!-- <ListView
         android:id="@+id/my_list"

@@ -3,6 +3,7 @@ package com.example.veigar.intelligentbuilding.network;
 import android.content.Context;
 
 import com.android.volley.Response;
+import com.example.veigar.intelligentbuilding.util.L;
 
 
 import java.io.UnsupportedEncodingException;
@@ -68,6 +69,7 @@ public class RequestManager {
             }
 
             url = sb.toString();
+
         }
 
         request.get(url, responseListener, errorListener);

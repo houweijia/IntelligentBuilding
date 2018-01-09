@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/brown">
+
+
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="ButterFly"
+       android:layout_gravity="center"
+       android:layout_marginTop="10dp"
+       android:textColor="@color/textColor"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/grey"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+        
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+           <ImageView
+               android:id="@+id/image_start"
+               android:layout_width="30dp"
+               android:layout_height="30dp"
+               android:src="@mipmap/dialog_stop"/>
+
+           <ImageView
+               android:id="@+id/image_stop"
+               android:layout_width="30dp"
+               android:layout_height="30dp"
+               android:src="@mipmap/dialog_play"
+               android:visibility="gone"/>
+
+
+       </RelativeLayout>
+
+
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

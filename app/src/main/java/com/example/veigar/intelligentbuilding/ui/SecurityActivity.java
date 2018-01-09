@@ -43,7 +43,7 @@ public class SecurityActivity extends BaseActivity {
         Bitmap mohu = MyUtils.fastblur(background,40);
         BitmapDrawable drawable = new BitmapDrawable(mohu);
         mList.setBackground(drawable);*/
-        adapter = new SecurityAdapter(context, list, R.layout.security_list_item) {
+        /*adapter = new SecurityAdapter(context, list, R.layout.security_list_item) {
 
             @Override
             public void swlistener(boolean isChecked) {
@@ -58,7 +58,7 @@ public class SecurityActivity extends BaseActivity {
                 L.e("1111");
                 return false;
             }
-        });
+        });*/
     }
 
     private void addData(){

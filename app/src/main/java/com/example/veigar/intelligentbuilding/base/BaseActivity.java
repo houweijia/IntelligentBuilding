@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -21,6 +22,8 @@ import com.example.veigar.intelligentbuilding.util.L;
 import com.example.veigar.intelligentbuilding.util.MyUtils;
 import com.example.veigar.intelligentbuilding.util.NetworkUtils;
 import com.example.veigar.intelligentbuilding.util.UiHelper;
+
+import java.util.Observable;
 
 /**
  * Created by veigar on 2017/3/6.
@@ -128,6 +131,11 @@ public class BaseActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    public static Handler heartHandler = new Handler(){
+
+    };
 
 
 }

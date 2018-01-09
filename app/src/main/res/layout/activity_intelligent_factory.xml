@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/common_progress"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <com.github.glomadrian.dashedcircularprogress.DashedCircularProgress
+                    android:id="@+id/dash_progress"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    custom:base_color="#6effffff"
+                    custom:duration="1500"
+                    custom:external_color="#1affffff"
+                    custom:max="999"
+                    custom:min="0"
+                    custom:progress_color="#000000"
+                    custom:progress_icon="@mipmap/img_sensor">
+
+                    <TextView
+                        android:id="@+id/tv_sensor_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1111"
+                        android:textColor="@color/textWhite"
+                        android:textSize="19sp" />
+
+
+                </com.github.glomadrian.dashedcircularprogress.DashedCircularProgress>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_sensor"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

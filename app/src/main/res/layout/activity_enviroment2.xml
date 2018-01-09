@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_enviroment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.veigar.intelligentbuilding.ui.EnvironmentActivity">
+
+    <include layout="@layout/common_progress"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/common_toolbar"/>
+
+
+        <!--<com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/linear_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/textColor"
+            android:gravity="center_horizontal">
+
+            <RelativeLayout
+                android:id="@+id/sensor_detail"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_margin="3dp"
+                >
+
+                <include layout="@layout/dashboard" />
+
+                <include layout="@layout/dashboard_humidity"/>
+
+                <include layout="@layout/dashboard_height"/>
+
+                <include layout="@layout/dashboard_smoke"/>
+
+                <include layout="@layout/environment_switch"/>
+
+                <include layout="@layout/dashboard_pm"/>
+
+                <include layout="@layout/linear_wind_direction"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+
+                    ></android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+        <!--</com.baoyz.widget.PullRefreshLayout>-->
+    </LinearLayout>
+
+
+
+</RelativeLayout>

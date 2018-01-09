@@ -8,7 +8,7 @@ android {
         applicationId "com.example.veigar.intelligentbuilding"
         useLibrary "org.apache.http.legacy"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -42,6 +42,9 @@ dependencies {
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    //compile 'com.google.code.gson:gson:2.7'
     testCompile 'junit:junit:4.12'
     compile project(':volley')
+    compile project(':xCLCharts')
+    compile 'com.github.glomadrian:DashedCircularProgress:1.0@aar'//环形
 }

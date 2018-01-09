@@ -18,14 +18,31 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/img">
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="10dp">
 
-        <TextView
-            android:id="@+id/tv_sensor_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="卧室温度"
-            android:layout_marginLeft="10dp"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sensor_name"
+                android:layout_marginLeft="10dp"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_sensor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="卧室温度"
+                android:layout_marginLeft="5dp"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +53,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID:"/>
+                android:text="ID:"
+                android:textSize="13sp"/>
 
             <TextView
                 android:id="@+id/tv_sensor_id"
@@ -56,7 +74,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间"/>
+                android:text="时间"
+                android:textSize="13sp"/>
 
             <TextView
                 android:id="@+id/tv_time"
@@ -76,9 +95,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20度"
-            android:textSize="15sp"
-            android:textColor="@color/gold"
-            android:layout_marginRight="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginRight="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             />

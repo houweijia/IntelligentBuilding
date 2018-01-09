@@ -1,15 +1,26 @@
 package com.example.veigar.intelligentbuilding.ui.fragment;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.print.PrintHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.veigar.intelligentbuilding.R;
@@ -19,15 +30,18 @@ import com.example.veigar.intelligentbuilding.network.RequestManager;
 import com.example.veigar.intelligentbuilding.util.JSONParseUtils;
 import com.example.veigar.intelligentbuilding.util.L;
 import com.example.veigar.intelligentbuilding.util.MD5Utils;
+import com.example.veigar.intelligentbuilding.util.MyUtils;
 import com.example.veigar.intelligentbuilding.util.RequestAPI;
 import com.example.veigar.intelligentbuilding.util.SPUtils;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -50,11 +64,26 @@ public class EnvironmentImageFragment extends BaseFragment {
     private Thread thread;
     private String getUrl = "dev_data";
     private Bundle bundle;
-    private String id,type;
+    private String id, type;
     private String sensorData;
     private float a = 1;
     private Timer timer;
     private List<Entry> entryList;
+    private float f;
+    private float max = 0f;
+    private float min = 0f;
+    private boolean flag = true;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            realTime.setText(MyUtils.timet2("1493024624"));
+        }
+    };
+    private TextView realTime;
+    private Intent intent;
+    private LocalBroadcastManager manager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,24 +91,27 @@ public class EnvironmentImageFragment extends BaseFragment {
         bundle = getArguments();
         id = bundle.getString("id");
         type = bundle.getString("type");
-        SPUtils.put(activity,"id",id);
-        SPUtils.put(activity,"type",type);
-
+        /*SPUtils.put(activity,"id",id);
+        SPUtils.put(activity,"type",type);*/
+        setRange();
 
 
     }
 
     @Override
     public View getRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_one,container,false);
+        return inflater.inflate(R.layout.fragment_one, container, false);
     }
 
     @Override
     public void init(View rootView) {
+        registerBroad();
 
-        L.e("id===="+ id);
+
+        L.e("id====" + id);
         timingFresh();
-        mChart = (LineChart)rootView.findViewById(R.id.line_chart);
+        mChart = (LineChart) rootView.findViewById(R.id.line_chart);
+        realTime = (TextView) rootView.findViewById(R.id.tv_real_time);
         initChart();
 
     }
@@ -99,31 +131,52 @@ public class EnvironmentImageFragment extends BaseFragment {
         mChart.setBackgroundColor(Color.TRANSPARENT);
 
         LineData data = new LineData();
-        data.setValueTextColor(Color.WHITE);
+        data.setValueTextColor(Color.BLUE);
         mChart.setData(data);//设置一个空的data
 
         Legend l = mChart.getLegend();
         // modify the legend ...
         l.setForm(Legend.LegendForm.LINE);
-        l.setTextColor(Color.WHITE);
+        l.setTextColor(Color.BLUE);
 
         XAxis xl = mChart.getXAxis();
-        xl.setTextColor(Color.WHITE);
+        xl.setTextColor(Color.BLUE);
         xl.setDrawGridLines(false);
         xl.setAvoidFirstLastClipping(true);
-        xl.setEnabled(true);
+        xl.setEnabled(false);
+        //xl.setTypeface(Typeface.create("111",Typeface.NORMAL));
+        xl.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                //return MyUtils.timet2("1493024624");
+                return a + "";
+            }
+
+        });
         xl.setPosition(XAxis.XAxisPosition.BOTTOM);// 设置X轴的数据显示在报表的下方
+
 
         //设置左边y轴的样式
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTextColor(Color.BLUE);
-        leftAxis.setAxisMaximum(130f);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMaximum(max);
+        leftAxis.setAxisMinimum(min);
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return value + "";
+            }
 
+
+        });
         leftAxis.setDrawGridLines(true);
+
+        //leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         //leftAxis.setDrawAxisLine(true);
 
         YAxis rightAxis = mChart.getAxisRight();
+        //YAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+
         rightAxis.setEnabled(false);
     }
 
@@ -142,9 +195,9 @@ public class EnvironmentImageFragment extends BaseFragment {
             }
 
             //data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
-            float f = Float.parseFloat(sensorData);
+            f = Float.parseFloat(sensorData);
 
-            data.addEntry(new Entry(a,f),0);
+            data.addEntry(new Entry(set.getEntryCount(), f), 0);
 
             data.notifyDataChanged();
 
@@ -152,7 +205,7 @@ public class EnvironmentImageFragment extends BaseFragment {
             mChart.notifyDataSetChanged();
 
             // limit the number of visible entries
-            mChart.setVisibleXRangeMaximum(120);
+            mChart.setVisibleXRangeMaximum(5);
             // mChart.setVisibleYRange(30, AxisDependency.LEFT);
 
             // move to the latest entry
@@ -166,7 +219,7 @@ public class EnvironmentImageFragment extends BaseFragment {
 
     private LineDataSet createSet() {
         String name = null;
-        switch (type){
+        switch (type) {
             case "8":
                 name = "温度传感器";
                 break;
@@ -198,7 +251,7 @@ public class EnvironmentImageFragment extends BaseFragment {
                 name = "声音传感器";
                 break;
         }
-        if(name==null){
+        if (name == null) {
             name = "无";
         }
         LineDataSet set = new LineDataSet(entryList, name);
@@ -210,9 +263,9 @@ public class EnvironmentImageFragment extends BaseFragment {
         set.setFillAlpha(65);
         set.setFillColor(ColorTemplate.getHoloBlue());
         set.setHighLightColor(Color.rgb(244, 117, 117));
-        set.setValueTextColor(Color.WHITE);
+        set.setValueTextColor(Color.BLACK);
         set.setValueTextSize(9f);
-        set.setDrawValues(false);
+        set.setDrawValues(true);
         return set;
     }
 
@@ -236,7 +289,8 @@ public class EnvironmentImageFragment extends BaseFragment {
                 /*for (int i = 0; i < 10; i++) {
 
                     // Don't generate garbage runnables inside the loop.
-                    runOnUiThread(runnable);
+                    //runOnUiThread(runnable);
+                    activity.runOnUiThread(runnable);
 
                     try {
                         Thread.sleep(1000);
@@ -245,7 +299,7 @@ public class EnvironmentImageFragment extends BaseFragment {
                         e.printStackTrace();
                     }
                 }*/
-                while (true){
+                while (true) {
                     activity.runOnUiThread(runnable);
                     try {
                         Thread.sleep(2000);
@@ -270,35 +324,39 @@ public class EnvironmentImageFragment extends BaseFragment {
         timer.cancel();
     }
 
-    private void load(){
-        Map<String,String> map = new HashMap<>();
+    private void load() {
+        Map<String, String> map = new HashMap<>();
         //map.put("devid","00000001");
-        map.put("sensorid",id);//修改
-        map.put("type",type);//修改
-        map.put("flag","1");
+        map.put("sensorid", id);//修改
+        map.put("type", type);//修改
+        map.put("flag", "1");
         String random = String.valueOf(SystemClock.currentThreadTimeMillis());
-        String userInformation = String.valueOf(SPUtils.get(activity,"userInformation","1111"));
-        L.e(userInformation+"---user---");
-        if(!userInformation.equals(-1)){
-            String code = MD5Utils.md5(userInformation+random);
-            map.put("code",code);
-        }
+        String userInformation = String.valueOf(SPUtils.get(activity, "userInformation", "1111"));
+        L.e(userInformation + "---user---");
+        map.put("code", userInformation);
         RequestManager.getInstance().get(RequestAPI.URL + getUrl, new RequestManager.ResponseListener() {
             @Override
             public void onResponse(String s) {
-                L.e("s======="+s);
+                L.e("s=======" + s);
                 try {
                     JSONObject object = new JSONObject(s);
                     Object object2 = object.get("result");
                     List<EnvironmentData> environmentDatas = JSONParseUtils.parseArray(String.valueOf(object2), EnvironmentData.class);
-                    if(environmentDatas.get(0).getNodedata().get(3)!=null){
+                    if (environmentDatas.get(0).getNodedata().get(3) != null) {
                         sensorData = environmentDatas.get(0).getNodedata().get(3);
-                        Entry entryY =  new Entry();
+
+                        Entry entryY = new Entry();
                         entryY.setY(Float.valueOf(sensorData));
-                        entryList = new ArrayList<Entry>();
+                        entryList = new ArrayList<>();
                         entryList.add(entryY);
                     }
-                    feedMultiple();
+                    if (flag) {
+                        feedMultiple();
+                        flag = false;
+                    }
+
+                    handler.sendEmptyMessage(0);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -308,26 +366,95 @@ public class EnvironmentImageFragment extends BaseFragment {
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        },map);
+        }, map);
 
 
     }
 
-    private void timingFresh(){
+    private void timingFresh() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 a = a + 1;
-                L.e("a==="+a);
+                //L.e("a==="+a);
                 load();
 
 
             }
         };
         timer = new Timer();
-        timer.schedule(timerTask,0,2000);
+        timer.schedule(timerTask, 0, 2000);
     }
 
 
+    private void setRange() {
+        switch (type) {
+            case "8":
+                max = 100f;
+                min = -20f;
+                break;
+            case "9":
+                max = 100f;
+                min = 0f;
+                break;
+            case "11":
+                max = 100f;
+                min = 0f;
+                break;
+            case "13":
+                max = 200f;
+                min = 0f;
+                break;
+            case "14":
+                break;
+            case "15":
+                max = 200f;
+                min = 0f;
+                break;
+            case "17":
+                max = 1f;
+                min = 0f;
+                break;
+            case "19":
+                max = 1f;
+                min = 0f;
+                break;
+            case "20":
+                max = 1f;
+                min = 0f;
+                break;
+            case "21":
+                max = 100f;
+                min = 0f;
+                break;
+            case "22":
+                max = 100f;
+                min = 0f;
+                break;
+            case "23":
+                max = 100f;
+                min = 0f;
+                break;
+        }
+    }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (manager != null) {
+            manager.sendBroadcast(intent);
+        }
+    }
+
+    private void registerBroad() {
+        manager = LocalBroadcastManager.getInstance(activity);
+        intent = new Intent("com.veigar.LOCAL_BROADCAST");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        L.e("imagestop");
+    }
 }

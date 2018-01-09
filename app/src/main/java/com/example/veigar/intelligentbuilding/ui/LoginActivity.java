@@ -22,8 +22,12 @@ import com.example.veigar.intelligentbuilding.util.JSONParseUtils;
 import com.example.veigar.intelligentbuilding.util.L;
 import com.example.veigar.intelligentbuilding.util.MD5Utils;
 import com.example.veigar.intelligentbuilding.util.MyUtils;
+import com.example.veigar.intelligentbuilding.util.RequestAPI;
 import com.example.veigar.intelligentbuilding.util.SPUtils;
 import com.example.veigar.intelligentbuilding.util.UiHelper;
+import com.google.gson.Gson;
+
+import org.apache.shiro.crypto.hash.SimpleHash;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -36,15 +40,16 @@ public class LoginActivity extends BaseActivity {
 
     private EditText btnUsername;
     private EditText btnPassword;
-    private String url = "http://115.28.77.207:8086/webapi/login";
+    //private String url = "http://115.28.77.207:8086/webapi/login";
+    private String url = "login";
     private ProgressDialog progressDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+
     }
 
     private void initView() {
@@ -64,30 +69,27 @@ public class LoginActivity extends BaseActivity {
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             progressDialog = DialogUtils.showProgressDialog(context, R.string.logining);
             final String username = btnUsername.getText().toString();
             final String password = btnPassword.getText().toString();
+            final String code = new SimpleHash("SHA-1", username, password).toString();
             String random = String.valueOf(System.currentTimeMillis());
-            String str = username+password+random;
-            L.e(str);
-            String code = MD5Utils.md5(str);
-            L.e(code);
             L.e(username+"----"+password);
             Map<String,String> params = new HashMap<>();
             params.put("username",username);
             params.put("code",code);
+            L.e("code==="+code);
             params.put("random",random);
-            RequestManager.getInstance().post(url, new RequestManager.ResponseListener() {
+            RequestManager.getInstance().post(RequestAPI.URL+url, new RequestManager.ResponseListener() {
                 @Override
                 public void onResponse(String s) {
                     SPUtils.put(context,"username",username);
                     SPUtils.put(context,"password",password);
                     if(username != null && password != null)
-                    SPUtils.put(context,"userInformation",username+password);
+                    SPUtils.put(context,"userInformation",code);
                     progressDialog.dismiss();
                     LoginData loginData = JSONParseUtils.parseObject(s, LoginData.class);
-                    if(loginData.getMsg().equals("SUCCESS"))
+                    if(loginData.getMsg().equals("ok"))
                     UiHelper.forwardMainActivity(context);
                     L.e(s);
 
@@ -104,4 +106,7 @@ public class LoginActivity extends BaseActivity {
 
         }
     };
+
+
+
 }

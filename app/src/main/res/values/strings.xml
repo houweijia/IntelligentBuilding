@@ -6,7 +6,7 @@
     <string name="drawer_close">关闭</string>
     <string name="tip_loading">正在加载...</string>
     <string name="username">用户名:</string>
-    <string name="intelligent_life">智慧生活</string>
+    <string name="intelligent_life">智慧制造</string>
     <string name="zega">哲嘉科技</string>
     <string name="password">密&#160;&#160;&#160;&#160;码:</string>
     <string name="login">登&#160;&#160;&#160;录</string>
@@ -23,4 +23,16 @@
     <string name="video">历史录像</string>
     <string name="monitor">安防监控</string>
     <string name="no_data">暂无数据</string>
+    <string name="temperature1">%1$s℃</string>
+    <string name="percent">%</string>
+    <string name="humidity">相对湿度</string>
+    <string name="sun">光照强度</string>
+    <string name="height">%1$sM</string>
+    <string name="status">状态:%1$s</string>
+    <string name="formaldehyde">甲醛浓度</string>
+    <string name="co">一氧化碳浓度</string>
+    <string name="sensor_name">传感器名称:</string>
+    <string name="view">预览</string>
+    <string name="wind_speed">当前风速</string>
+    <string name="wind_direction">风向：%1$s</string>
 </resources>

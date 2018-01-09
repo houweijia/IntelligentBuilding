@@ -1,4 +1,4 @@
-package com.example.veigar.intelligentbuilding.util;
+package com.example.veigar.intelligentbuilding.weight;
 
 import android.content.Context;
 import android.util.AttributeSet;

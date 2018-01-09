@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/my_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="270dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/light_shape"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_red"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="红"
+                android:gravity="center"
+                android:background="@drawable/light_top_tv_normal_background"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/other_grey"/>
+
+            <TextView
+                android:id="@+id/tv_green"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="绿"
+                android:background="@color/light_background"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/other_grey"/>
+
+            <TextView
+                android:id="@+id/tv_blue"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="蓝"
+                android:gravity="center"
+                android:background="@drawable/light_bottom_tv_normal_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="FLASH"
+                android:background="@drawable/light_btn_shape"
+                android:layout_margin="10dp"/>
+
+            <Button
+
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="STROBE"
+                android:background="@drawable/light_btn_shape"
+                android:layout_margin="10dp"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="FADE"
+                android:background="@drawable/light_btn_shape"
+                android:layout_margin="10dp"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="SMOOTH"
+                android:background="@drawable/light_btn_shape"
+                android:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

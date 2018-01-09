@@ -12,11 +12,18 @@
         >
 
         <ImageView
-            android:src="@mipmap/logo"
+            android:src="@mipmap/school_logo"
             android:layout_width="140dp"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
             android:layout_centerInParent="true"></ImageView>
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="常州工程"
+            android:textSize="30sp"
+            android:textColor="@color/colorPrimary"/>-->
     </RelativeLayout>
 
     <LinearLayout
@@ -36,14 +43,14 @@
            android:textSize="15sp"
            />
 
-        <TextView
+        <!--<TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:singleLine="false"
             android:text="@string/zega"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorPrimary"
-            android:textSize="15sp"/>
+            android:textSize="15sp"/>-->
     </LinearLayout>
 
 

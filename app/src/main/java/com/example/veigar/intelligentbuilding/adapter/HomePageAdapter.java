@@ -14,6 +14,7 @@ import com.example.veigar.intelligentbuilding.bean.EquipmentInformation;
 import com.example.veigar.intelligentbuilding.bean.Result;
 import com.example.veigar.intelligentbuilding.ui.fragment.HomePageFragment;
 import com.example.veigar.intelligentbuilding.util.L;
+import com.example.veigar.intelligentbuilding.util.MyUtils;
 
 import java.util.List;
 
@@ -45,7 +46,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.HomePa
     public void onBindViewHolder(HomePageViewHolder holder, int position) {
         Result data = list.get(position);
         //L.e("data==="+data.getDev());
-        holder.equipmentName.setText(data.getDev().get(1));//设备名称
+        holder.equipmentName.setText(MyUtils.toUtf8(data.getDev().get(1)));//设备名称
+        //holder.equipmentName.setText(data.getDev().get(1));//设备名称
         holder.lastTime.setText(data.getDev().get(3));//上次登录时间
         if(data.getDev().get(4).equals("0")){
             holder.whetherOnline.setImageResource(R.mipmap.circle_red);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/relative_humidity"
+    android:visibility="gone"
+    >
+
+    <com.example.veigar.intelligentbuilding.weight.DialChartViewHumidity
+        android:id="@+id/circle_view2"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前湿度"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/sensor_data2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"/>
+
+
+
+
+</RelativeLayout>

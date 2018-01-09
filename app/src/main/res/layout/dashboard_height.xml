@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/relative_height"
+    android:visibility="gone">
+
+
+    <com.example.veigar.intelligentbuilding.weight.DialChartViewHeight
+        android:id="@+id/circle_view3"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_name3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前海拔"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/sensor_data3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="22sp"/>
+
+
+
+
+
+
+</RelativeLayout>

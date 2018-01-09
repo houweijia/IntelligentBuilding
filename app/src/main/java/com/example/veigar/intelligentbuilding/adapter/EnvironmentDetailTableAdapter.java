@@ -39,7 +39,7 @@ public class EnvironmentDetailTableAdapter extends CusAdapter<EnvironmentDetailT
         }
 
         if(data.getNodedata().get(1) != null){
-            sensorName.setText(data.getNodedata().get(1));
+            sensorName.setText(MyUtils.toUtf8(data.getNodedata().get(1)));
         }
 
         if(data.getNodedata().get(3) != null){
@@ -48,7 +48,6 @@ public class EnvironmentDetailTableAdapter extends CusAdapter<EnvironmentDetailT
 
         if(data.getNodedata().get(4) != null){
             String time = MyUtils.timet(data.getNodedata().get(4));
-            L.e("time==="+time);
             sensorTime.setText(time);
         }
 

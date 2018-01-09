@@ -10,12 +10,11 @@ import android.widget.TextView;
 import com.example.veigar.intelligentbuilding.R;
 import com.example.veigar.intelligentbuilding.adapter.AttendanceAdapter;
 import com.example.veigar.intelligentbuilding.base.BaseActivity;
-import com.example.veigar.intelligentbuilding.bean.PersonAttendanceData;
 import com.example.veigar.intelligentbuilding.bean.Result;
 import com.example.veigar.intelligentbuilding.bean.Result1;
 import com.example.veigar.intelligentbuilding.util.JSONParseUtils;
 import com.example.veigar.intelligentbuilding.util.L;
-import com.example.veigar.intelligentbuilding.util.ListViewForScroll;
+import com.example.veigar.intelligentbuilding.weight.ListViewForScroll;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -117,8 +116,8 @@ public class PersonAttendanceActivity extends BaseActivity implements OnChartVal
 
         mPieChart.setRotationAngle(0);
         // 触摸旋转
-        mPieChart.setRotationEnabled(true);
-        mPieChart.setHighlightPerTapEnabled(true);
+        mPieChart.setRotationEnabled(false);
+        mPieChart.setHighlightPerTapEnabled(false);
 
 
         ArrayList<PieEntry> entries = new ArrayList<>();

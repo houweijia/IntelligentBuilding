@@ -11,7 +11,7 @@
        android:layout_height="match_parent"
        >
 
-       <com.example.veigar.intelligentbuilding.util.CircleMenuLayout
+       <com.example.veigar.intelligentbuilding.weight.CircleMenuLayout
            android:id="@+id/id_menulayout"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
@@ -30,7 +30,7 @@
                                android:layout_centerInParent="true"
                                android:background="@mipmap/turnplate_center_unlogin" />-->
 
-               <com.example.veigar.intelligentbuilding.util.RoundImageView
+               <com.example.veigar.intelligentbuilding.weight.RoundImageView
                    android:layout_width="104.0dip"
                    android:layout_height="140.0dip"
                    android:layout_centerInParent="true"
@@ -42,7 +42,7 @@
                    android:layout_centerInParent="true"
                    android:background="@mipmap/turnplate_mask_unlogin_normal" />-->
            </RelativeLayout>
-       </com.example.veigar.intelligentbuilding.util.CircleMenuLayout>
+       </com.example.veigar.intelligentbuilding.weight.CircleMenuLayout>
    </RelativeLayout>
 
 

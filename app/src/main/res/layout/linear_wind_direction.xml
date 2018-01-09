@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/linear_wind_direction"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp">
+
+        <!--<ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/noise_yes"/>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="有"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="北"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_wind"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/img_wind_pan"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/iv_wind2"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@mipmap/img_wind_zhizhen"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="南"
+            android:layout_below="@id/iv_wind"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_wind_direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="风向："
+        android:textColor="@color/colorPrimary"/>
+
+</LinearLayout>

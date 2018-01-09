@@ -103,7 +103,7 @@ public class EnvironmentActivity extends BaseActivity implements View.OnClickLis
 
                 showPopupWindow();
 
-                return false;
+                return true;
             }
         });
 

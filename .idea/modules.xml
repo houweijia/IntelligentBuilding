@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/IntelligentBuilding.iml" filepath="$PROJECT_DIR$/IntelligentBuilding.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xCLCharts/xCLCharts.iml" filepath="$PROJECT_DIR$/xCLCharts/xCLCharts.iml" />
     </modules>
   </component>
 </project>

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +47,6 @@ public class MyUtils {
      */
     public static void exitApp(Context context){
         //停止网络状态监听Service
-        //context.stopService(new Intent(context, NetWorkStateService.class));
        //L.d("销毁Activity size:" + activityList.size());
         for (Activity ac : activityList) {
             if(!ac.isFinishing()){
@@ -320,5 +320,73 @@ public class MyUtils {
 
     }
 
+    public static String timet2(String time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("HH:mm:ss");
+        @SuppressWarnings("unused")
+        long lcc = Long.valueOf(time);
+        int i = Integer.parseInt(time);
+        String times = sdr.format(new Date(i * 1000L));
+        return times;
 
+    }
+
+
+    public static String toUtf8(String str) {
+                String result = null;
+                 try {
+                         result = new String(str.getBytes("ISO-8859-1"), "UTF-8");
+                     } catch (UnsupportedEncodingException e) {
+                         // TODO Auto-generated catch block
+                         e.printStackTrace();
+                     }
+                 return result;
+             }
+
+    /**
+     * 获取状态栏的高度
+     * @param context
+     * @return
+     */
+    public static int getStatusHeight(Context context) {
+        int statusHeight = -1;
+        try {
+            Class<?> clazz = Class.forName("com.android.internal.R$dimen");
+            Object object = clazz.newInstance();
+            int height = Integer.parseInt(clazz.getField("status_bar_height")
+                    .get(object).toString());
+            statusHeight = context.getResources().getDimensionPixelSize(height);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusHeight;
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * 获取导航栏高度
+     * @param context
+     * @return
+     */
+    public static int getDaoHangHeight(Context context) {
+        int result = 0;
+        int resourceId=0;
+        int rid = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        if (rid!=0){
+            resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+            return context.getResources().getDimensionPixelSize(resourceId);
+        }else
+            return 0;
+    }
 }

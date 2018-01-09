@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="tran_colorPrimary">#703F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="textColor">#ffffff</color>
     <color name="login_background">#50ffffff</color>
+    <color name="light_background">#70ffffff</color>
+    <color name="switch_bg">#5087CEFA</color>
     <color name="grey">#F5F5F5</color>textWhite
     <color name="textWhite">#ffffff</color>
     <color name="white_transparent">#CCffffff</color> <!--不透明度80%-->
     <color name="gold">#FFD700</color> <!--不透明度80%-->
+    <color name="other_blue">#995A99B3</color> <!--不透明度80%-->
+    <color name="other_grey">#c8c8c8</color> <!--不透明度80%-->
+    <color name="red">#FF0000</color> <!--不透明度80%-->
+    <color name="tran_red">#70FF0000</color> <!--不透明度80%-->
+    <color name="tran_green">#70008000</color> <!--不透明度80%-->
+    <color name="green">#008000</color> <!--不透明度80%-->
+    <color name="grey2">#778899</color> <!--不透明度80%-->
+    <color name="tran_grey2">#70778899</color> <!--不透明度80%-->
+    <color name="dark_red">#892b23</color> <!--不透明度80%-->
+    <color name="tran_dark_red">#70892b23</color> <!--不透明度80%-->
+    <color name="brown">#382e2d</color> <!--不透明度80%-->
+    <color name="music_btn_green">#31c27b</color> <!--不透明度80%-->
+    <color name="blue2">#738ffe</color>
+
 </resources>

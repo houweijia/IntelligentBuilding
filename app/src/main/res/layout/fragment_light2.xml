@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/blue_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true"
+        android:layout_gravity="center_horizontal">
+
+    <Button
+        style="@style/light_btn_style"
+        android:background="@drawable/light_brightness_selector"
+        android:text="+"
+        android:textSize="20sp"
+        />
+
+    <Button
+        style="@style/light_btn_style"
+        android:background="@drawable/light_brightness_selector"
+        android:text="-"
+        android:textSize="20sp"
+        />
+    <Button
+        style="@style/light_btn_style"
+        android:background="@drawable/light_brightness_selector"
+        android:text="ON"
+        android:textSize="14sp"
+        />
+
+    <Button
+        style="@style/light_btn_style"
+        android:background="@drawable/light_red_selector"
+        android:text="OFF"
+        android:textSize="14sp"/>
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_red_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_green_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_blue_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_dark_red_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_grey_selector"
+            android:text="FLASH"
+            android:textSize="14sp"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_grey_selector"
+            android:text="STROBE"
+            android:textSize="14sp"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_grey_selector"
+            android:text="FADE"
+            android:textSize="14sp"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_brightness_selector"/>
+
+        <Button
+            style="@style/light_btn_style"
+            android:background="@drawable/light_grey_selector"
+            android:text="SMOOTH"
+            android:textSize="14sp"/>
+
+    </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

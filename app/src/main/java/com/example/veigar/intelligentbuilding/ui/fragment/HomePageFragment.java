@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.veigar.intelligentbuilding.R;
@@ -38,15 +40,16 @@ import java.util.Map;
  * Created by veigar on 2017/3/7.
  */
 
-public class HomePageFragment extends BaseFragment{
+public class HomePageFragment extends BaseFragment implements View.OnClickListener{
 
     private RecyclerView mRecycleView;
     private List<EquipmentInformation> list;
-    private String url = "http://115.28.77.207:8086/webapi/get_dev";
-    private List<Result> results;
+    private String url = "get_dev";
+    private List<Result> results = new ArrayList<>();
     private HomePageAdapter adapter;
     private String sJson = "{\"resultcode\":\"200\",\"reason\":\"success\",\"result\":[{\"dev0\":[\"00000001\",\"one\",\"1\",\"1\",\"1\"]},{\"dev0\":[\"00000002\",\"two\",\"3\",\"2\",\"0\"]},{\"dev0\":[\"00000003\",\"three\",\"2\",\"3\",\"0\"]}],\"error_code\":\"0\"}";
     private RelativeLayout mProgress;
+    private TextView reloading;
 
     @Override
     public View getRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class HomePageFragment extends BaseFragment{
         mProgress = (RelativeLayout) rootView.findViewById(R.id.my_progress);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         mRecycleView.setLayoutManager(staggeredGridLayoutManager);
+        reloading = (TextView) rootView.findViewById(R.id.tv_reloading);
+        reloading.setOnClickListener(this);
         //addData();
 
         mProgress.setVisibility(View.VISIBLE);
@@ -66,46 +71,14 @@ public class HomePageFragment extends BaseFragment{
         loadData();
     }
 
-    /**
-     * 假数据
-     */
-    /*private void addData() {
-        EquipmentInformation data =  new EquipmentInformation();
-        EquipmentInformation data2 =  new EquipmentInformation();
-        EquipmentInformation data3 =  new EquipmentInformation();
-        EquipmentInformation data4 =  new EquipmentInformation();
-        EquipmentInformation data5 =  new EquipmentInformation();
-        data.setName("小王的家");
-        data.setId(101);
-        data2.setName("小张的家");
-        data2.setId(102);
-        data3.setName("小冉的家");
-        data3.setId(103);
-        data4.setName("小康的家");
-        data4.setId(104);
-        data5.setName("小刚的家");
-        data5.setId(105);
-        list = new ArrayList<>();
-        list.add(data);
-        list.add(data2);
-        list.add(data3);
-        list.add(data4);
-        list.add(data5);
-
-    }
-*/
     private void loadData(){
         Map<String,String> map = new HashMap<>();
         String random = String.valueOf(SystemClock.currentThreadTimeMillis());
         String userInformation = (String) SPUtils.get(activity,"userInformation","-1");
-        if(!userInformation.equals("-1")){
-            String code = MD5Utils.md5(userInformation+random);
-
-            map.put("code",code);
-        }
-
+        L.e("code===="+userInformation);
+        map.put("code",userInformation);
         map.put("random",random);
-        RequestManager.getInstance().get(url, new RequestManager.ResponseListener() {
+        RequestManager.getInstance().get(RequestAPI.URL+url, new RequestManager.ResponseListener() {
             @Override
             public void onResponse(String s) {
                 mProgress.setVisibility(View.GONE);
@@ -113,30 +86,45 @@ public class HomePageFragment extends BaseFragment{
                 JSONObject object1 = null;
                 try {
                     object1 = new JSONObject(s);
-                    Object result2 = object1.get("result");
-                    results = JSONParseUtils.parseArray(String.valueOf(result2), Result.class);
-                    //String s1 = results.get(1).getDev().get(1);
-                    //L.e("s1===="+s1);
-                    //results.size();
-                    L.e("results==="+results.size());
+                    Object resultcode = object1.get("resultcode");
+                    if(resultcode.equals("0")){
+                        reloading.setVisibility(View.GONE);
+                        Object result2 = object1.get("result");
+                        results.clear();
+                        results.addAll(JSONParseUtils.parseArray(String.valueOf(result2), Result.class));
+                        //String s1 = results.get(1).getDev().get(1);
+                        //L.e("s1===="+s1);
+                        //results.size();
+                        L.e("results==="+results.size());
 
-                    adapter = new HomePageAdapter(activity,results);
-                    mRecycleView.setAdapter(adapter);
+                        adapter = new HomePageAdapter(activity,results);
+                        adapter.notifyDataSetChanged();
+                        mRecycleView.setAdapter(adapter);
 
-                    adapter.setOnItemClickListener(new HomePageAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view) {
-                            int position = mRecycleView.getChildAdapterPosition(view);
-                            int itemViewType = adapter.getItemViewType(position);
-                            L.e("position==="+position);
-                            L.e("itemViewType==="+itemViewType);
-                            Intent intent = new Intent(activity, DetailActivity2.class);
-                            L.e("ID==="+results.get(position).getDev().get(0));
-                            intent.putExtra("id",results.get(position).getDev().get(0));
-                            startActivity(intent);
+                        adapter.setOnItemClickListener(new HomePageAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view) {
+                                int position = mRecycleView.getChildAdapterPosition(view);
+                                int itemViewType = adapter.getItemViewType(position);
+                                L.e("position==="+position);
+                                L.e("itemViewType==="+itemViewType);
+                                if(results.get(position).getDev().get(4).equals("1")){
+                                    Intent intent = new Intent(activity, DetailActivity2.class);
+                                    L.e("ID==="+results.get(position).getDev().get(0));
+                                    intent.putExtra("id",results.get(position).getDev().get(0));
+                                    intent.putExtra("name",results.get(position).getDev().get(1));
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(activity,"设备不在线",Toast.LENGTH_SHORT).show();
+                                }
 
-                        }
-                    });
+
+                            }
+                        });
+                    }else{
+                        reloading.setVisibility(View.VISIBLE);
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     return;
@@ -148,8 +136,18 @@ public class HomePageFragment extends BaseFragment{
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 mProgress.setVisibility(View.GONE);
+                reloading.setVisibility(View.VISIBLE);
                 L.e("失败");
             }
         },map);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_reloading:
+                loadData();
+                break;
+        }
     }
 }

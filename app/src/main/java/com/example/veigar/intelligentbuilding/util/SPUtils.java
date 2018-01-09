@@ -14,7 +14,7 @@ import java.util.Map;
 public class SPUtils {
 
     //保存在手机里面的文件名
-    private static final String FILE_NAME = "wuxianedu";
+    private static final String FILE_NAME = "zega";
 
     /**
      * 保存数据

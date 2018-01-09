@@ -5,11 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@android:color/white</item>
+        <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
     </style>
     
     <style name="cus_view">
@@ -42,6 +43,12 @@
         <item name="android:drawablePadding">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="light_btn_style">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 
 </resources>
