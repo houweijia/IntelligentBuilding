@@ -10,6 +10,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -266,12 +267,15 @@ public class EnergyActivity extends BaseActivity implements OnChartValueSelected
         }*/
         List<BarEntry> entries = new ArrayList<>();;
         for(int i = 0;i < list.size();i++){
-            Float aFloat = Float.valueOf(list.get(i).getEnergydata().get(5));
-            //yVals1.add(new BarEntry(i+1,aFloat));
+            if(!TextUtils.isEmpty(list.get(i).getEnergydata().get(5))){
+                Float aFloat = Float.valueOf(list.get(i).getEnergydata().get(5));
+                //yVals1.add(new BarEntry(i+1,aFloat));
+                entries.add(new BarEntry((float)i, aFloat));
+            }
             L.e("i=="+list.get(i).getEnergydata().get(5));
 
 
-            entries.add(new BarEntry((float)i, aFloat));
+
         }
 
         BarDataSet set = new BarDataSet(entries, "设备");
