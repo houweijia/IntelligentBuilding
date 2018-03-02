@@ -545,7 +545,7 @@ public class EnergyActivity extends BaseActivity implements OnChartValueSelected
             public void onErrorResponse(VolleyError volleyError) {
                 mProgress.setVisibility(View.GONE);
             }
-        },map);
+        },map );
 
 
     }
