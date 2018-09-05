@@ -48,6 +48,7 @@ public class DetailActivity2 extends BaseActivity {
     private String getUrl = "dev_data";
     private String mData;
     private String aaa = "1";
+    private String bb = "2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
