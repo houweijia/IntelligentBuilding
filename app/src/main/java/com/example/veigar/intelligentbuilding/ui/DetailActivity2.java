@@ -49,6 +49,7 @@ public class DetailActivity2 extends BaseActivity {
     private String mData;
     private String aaa = "1";
     private String bb = "2";
+    private String cc = "3";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
