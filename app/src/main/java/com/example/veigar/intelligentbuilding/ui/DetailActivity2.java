@@ -47,7 +47,7 @@ public class DetailActivity2 extends BaseActivity {
     private Bitmap mohu;
     private String getUrl = "dev_data";
     private String mData;
-    private String aaa = "";
+    private String aaa = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
